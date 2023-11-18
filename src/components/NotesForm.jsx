@@ -52,7 +52,7 @@ const NotesForm = ({ onAddNote }) => {
           value={note.body}
           setValue={onBodyChange}
         />
-        <Button full={true} variant="fullbutton" type="submit">
+        <Button full={true}>
           <FontAwesomeIcon icon={faCirclePlus} />
           Buat
         </Button>

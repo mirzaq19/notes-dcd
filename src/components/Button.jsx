@@ -1,10 +1,11 @@
 import styles from './Button.module.scss'
-const Button = (props) => {
-  const full = props.full ? styles.fullbutton : ''
-
+const Button = ({ full, onClick, children }) => {
   return (
-    <button {...props} className={`${styles.button} ${full}`}>
-      {props.children}
+    <button
+      onClick={onClick}
+      className={`${styles.button} ${full ? styles.fullbutton : ''}`}
+    >
+      {children}
     </button>
   )
 }
