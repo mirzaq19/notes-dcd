@@ -1,7 +1,7 @@
 import styles from './Input.module.scss'
 
 const Input = ({ required, placeholder, value, setValue }) => {
-  const onInputChange = (e) => {
+  const onChangeHandler = (e) => {
     const value = e.target.value
     setValue(value)
   }
@@ -13,7 +13,7 @@ const Input = ({ required, placeholder, value, setValue }) => {
       type="text"
       placeholder={placeholder}
       value={value}
-      onChange={onInputChange}
+      onChange={onChangeHandler}
     />
   )
 }

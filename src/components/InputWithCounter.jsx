@@ -4,7 +4,7 @@ import styles from './Input.module.scss'
 const Input = ({ required, placeholder, value, setValue, maxCounter = 50 }) => {
   const [counter, setCounter] = useState(maxCounter)
 
-  const onChangeInput = (e) => {
+  const onChangeHandler = (e) => {
     const value = e.target.value
 
     if (value.length <= maxCounter) {
@@ -20,7 +20,7 @@ const Input = ({ required, placeholder, value, setValue, maxCounter = 50 }) => {
       </div>
       <input
         required={required}
-        onChange={onChangeInput}
+        onChange={onChangeHandler}
         value={value}
         className={styles.input}
         type="text"
