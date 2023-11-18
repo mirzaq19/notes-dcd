@@ -6,7 +6,7 @@ import TextArea from './TextArea'
 import Section from './Section'
 import Button from './Button'
 
-const NotesForm = () => {
+const NotesForm = ({ onAddNote }) => {
   const [note, setNote] = useState({
     title: '',
     body: '',
@@ -26,9 +26,18 @@ const NotesForm = () => {
     })
   }
 
+  const onSubmitHandler = (e) => {
+    e.preventDefault()
+    onAddNote(note)
+    setNote({
+      title: '',
+      body: '',
+    })
+  }
+
   return (
     <Section title="Buat Catatan">
-      <form>
+      <form onSubmit={onSubmitHandler}>
         <InputWithCounter
           required={true}
           placeholder="Tuliskan judul catatan"

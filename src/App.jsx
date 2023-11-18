@@ -25,10 +25,22 @@ function App() {
     setNotes(newNotes)
   }
 
+  const onAddNoteHandler = (note) => {
+    setNotes([
+      ...notes,
+      {
+        ...note,
+        id: +new Date(),
+        archived: false,
+        createdAt: new Date().toISOString(),
+      },
+    ])
+  }
+
   return (
     <ThemeWrapper>
       <Layout>
-        <NotesForm />
+        <NotesForm onAddNote={onAddNoteHandler} />
         <Search value={searchText} setSearchText={setSearchText} />
         <NoteList
           notes={notes}
