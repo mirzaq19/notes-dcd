@@ -1,6 +1,6 @@
 import styles from './TextArea.module.scss'
 const TextArea = ({ required, placeholder, value, setValue }) => {
-  const onChangeInput = (e) => {
+  const onChangeHandler = (e) => {
     setValue(e.target.value)
   }
   return (
@@ -9,7 +9,7 @@ const TextArea = ({ required, placeholder, value, setValue }) => {
       required={required}
       value={value}
       rows={10}
-      onChange={onChangeInput}
+      onChange={onChangeHandler}
       placeholder={placeholder}
     />
   )
