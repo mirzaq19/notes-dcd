@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Layout from './components/Layout'
 import { ThemeProvider } from './contexts/theme'
+import NotesForm from './components/NotesForm'
 
 function App() {
   const userPrefersDark =
@@ -28,7 +29,9 @@ function App() {
 
   return (
     <ThemeProvider value={{ themeMode, lightTheme, darkTheme }}>
-      <Layout></Layout>
+      <Layout>
+        <NotesForm />
+      </Layout>
     </ThemeProvider>
   )
 }
