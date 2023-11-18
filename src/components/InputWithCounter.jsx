@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './Input.module.scss'
 
 const Input = ({ required, placeholder, value, setValue, maxCounter = 50 }) => {
@@ -12,6 +12,10 @@ const Input = ({ required, placeholder, value, setValue, maxCounter = 50 }) => {
       setValue(value)
     }
   }
+
+  useEffect(() => {
+    setCounter(maxCounter - value.length)
+  }, [maxCounter, value])
 
   return (
     <>

@@ -13,26 +13,24 @@ const NotesForm = ({ onAddNote }) => {
   })
 
   const onTitleChangeHandler = (value) => {
-    setNote({
-      ...note,
+    setNote((prevState) => ({
+      ...prevState,
       title: value,
-    })
+    }))
   }
 
   const onBodyChangeHandler = (value) => {
-    setNote({
-      ...note,
+    setNote((prevState) => ({
+      ...prevState,
       body: value,
-    })
+    }))
   }
 
   const onSubmitHandler = (e) => {
     e.preventDefault()
     onAddNote(note)
-    setNote({
-      title: '',
-      body: '',
-    })
+    onTitleChangeHandler('')
+    onBodyChangeHandler('')
   }
 
   return (
