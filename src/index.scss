@@ -18,4 +18,8 @@ body {
     background-color: $bg-color-dark;
     color: $text-color-dark;
   }
+
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+  }
 }
