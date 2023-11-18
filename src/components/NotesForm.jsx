@@ -12,14 +12,14 @@ const NotesForm = ({ onAddNote }) => {
     body: '',
   })
 
-  const onTitleChange = (value) => {
+  const onTitleChangeHandler = (value) => {
     setNote({
       ...note,
       title: value,
     })
   }
 
-  const onBodyChange = (value) => {
+  const onBodyChangeHandler = (value) => {
     setNote({
       ...note,
       body: value,
@@ -43,14 +43,14 @@ const NotesForm = ({ onAddNote }) => {
           placeholder="Tuliskan judul catatan"
           maxCounter={50}
           value={note.title}
-          setValue={onTitleChange}
+          setValue={onTitleChangeHandler}
         />
 
         <TextArea
           required={true}
           placeholder="Tuliskan isi catatan"
           value={note.body}
-          setValue={onBodyChange}
+          setValue={onBodyChangeHandler}
         />
         <Button full={true}>
           <FontAwesomeIcon icon={faCirclePlus} />
