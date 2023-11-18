@@ -3,7 +3,6 @@
 .container {
   display: flex;
   align-items: center;
-  font-size: 1.4rem;
   column-gap: 0.6rem;
 }
 
@@ -16,10 +15,12 @@
     height: 0;
   }
   .slider {
+    --slider-size: 1.8rem;
+    --slider-padding: 0.25rem;
     position: relative;
     display: inline-block;
-    width: 3.8rem;
-    height: 1.8rem;
+    width: calc(var(--slider-size) * 2 + var(--slider-padding));
+    height: var(--slider-size);
     background-image: linear-gradient(
       to bottom right,
       $primary-color,
@@ -28,13 +29,17 @@
     border-radius: 34px;
     transition: 0.4s;
 
+    @media screen and (max-width: 768px) {
+      --slider-size: 1.4rem;
+    }
+
     &::before {
       content: '';
       position: absolute;
-      top: 0.25rem;
-      left: 0.25rem;
-      width: 1.3rem;
-      height: 1.3rem;
+      top: var(--slider-padding);
+      left: var(--slider-padding);
+      width: calc(var(--slider-size) - var(--slider-padding) * 2);
+      height: calc(var(--slider-size) - var(--slider-padding) * 2);
       background-color: $primary-color;
       border-radius: 50%;
       transition: 0.4s;
@@ -48,7 +53,14 @@
       $accent-2-color
     );
     &::before {
-      transform: translateX(2rem);
+      transform: translateX(calc(var(--slider-size) + var(--slider-padding)));
     }
+  }
+}
+
+.theme_icon {
+  font-size: 1.4rem;
+  @media screen and (max-width: 768px) {
+    font-size: 1.2rem;
   }
 }

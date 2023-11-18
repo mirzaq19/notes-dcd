@@ -16,7 +16,7 @@ const ThemeToggle = () => {
 
   return (
     <div className={styles.container}>
-      <FontAwesomeIcon icon={faSun} />
+      <FontAwesomeIcon icon={faSun} className={styles.theme_icon} />
       <label className={styles.toggle}>
         <input
           type="checkbox"
@@ -26,7 +26,7 @@ const ThemeToggle = () => {
         />
         <span className={styles.slider}></span>
       </label>
-      <FontAwesomeIcon icon={faMoon} />
+      <FontAwesomeIcon icon={faMoon} className={styles.theme_icon} />
     </div>
   )
 }
