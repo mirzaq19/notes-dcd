@@ -6,7 +6,7 @@ import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 const ThemeToggle = () => {
   const { themeMode, lightTheme, darkTheme } = useTheme()
 
-  const onChangeTheme = () => {
+  const onChangeThemeHandler = () => {
     if (themeMode === 'dark') {
       lightTheme()
     } else {
@@ -21,7 +21,7 @@ const ThemeToggle = () => {
         <input
           type="checkbox"
           value=""
-          onChange={onChangeTheme}
+          onChange={onChangeThemeHandler}
           checked={themeMode === 'dark'}
         />
         <span className={styles.slider}></span>
