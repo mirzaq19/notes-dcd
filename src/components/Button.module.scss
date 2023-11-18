@@ -9,7 +9,6 @@
   font-weight: 600;
   border-radius: 5px;
   padding: 0.8rem 0.8rem;
-  margin-bottom: 1rem;
   background-image: linear-gradient(to right, $accent-1-color, $accent-2-color);
   color: $text-color-dark;
   outline: none;
@@ -26,5 +25,9 @@
 
   &:active {
     transform: scale(0.98);
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 0.6rem 0.6rem;
   }
 }
