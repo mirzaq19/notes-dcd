@@ -1,5 +1,11 @@
 @import '../styles/variables';
 
+[data-theme='dark'] {
+  .date {
+    color: $secondary-color !important;
+  }
+}
+
 .card {
   display: flex;
   flex-direction: column;
@@ -20,8 +26,7 @@
     height: 100%;
     .date {
       font-size: 0.9rem;
-      //   font-weight: 200;
-      color: $secondary-color;
+      color: $text-color-light;
     }
     .divider + p {
       text-align: left;
