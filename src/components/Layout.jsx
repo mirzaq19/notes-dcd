@@ -3,10 +3,12 @@ import Navbar from './Navbar'
 
 const Layout = ({ children }) => {
   return (
-    <div>
+    <>
       <Navbar />
-      <div className={styles.wrapper}>{children}</div>
-    </div>
+      <div className={styles.container}>
+        <div className={styles.wrapper}>{children}</div>
+      </div>
+    </>
   )
 }
 
