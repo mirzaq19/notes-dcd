@@ -1,0 +1,14 @@
+@import '../styles/variables';
+.container {
+  margin: 2rem 0;
+  padding: 0 1rem;
+}
+
+.title {
+  font-size: 1.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.divider {
+  border: 1px solid $secondary-color;
+}
