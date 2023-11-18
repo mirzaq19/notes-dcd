@@ -1,9 +1,9 @@
 import styles from './Input.module.scss'
 
-const Input = ({ required, placeholder, value, setValues }) => {
+const Input = ({ required, placeholder, value, setValue }) => {
   const onInputChange = (e) => {
     const value = e.target.value
-    setValues(value)
+    setValue(value)
   }
 
   return (
