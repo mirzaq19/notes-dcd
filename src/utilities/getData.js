@@ -1,48 +1,56 @@
-const getData = () => {
-  return [
-    {
-      id: 1,
-      title: 'Babel',
-      body: 'Babel merupakan tools open-source yang digunakan untuk mengubah sintaks ECMAScript 2015+ menjadi sintaks yang didukung oleh JavaScript engine versi lama. Babel sering dipakai ketika kita menggunakan sintaks terbaru termasuk sintaks JSX.',
-      archived: false,
-      createdAt: '2023-05-14T04:27:34.572Z',
-    },
-    {
-      id: 2,
-      title: 'Webpack',
-      body: 'Webpack merupakan tools open-source yang berfungsi untuk mengelola dependensi JavaScript. Webpack akan membaca semua file JavaScript yang kita buat, kemudian membuat dependency graph berdasarkan keseluruhan aplikasi kita. Setelah itu, Webpack akan mengemas semua file JavaScript tersebut menjadi satu file.',
-      archived: false,
-      createdAt: '2023-06-13T04:27:34.572Z',
-    },
-    {
-      id: 3,
-      title: 'ESLint',
-      body: 'ESLint merupakan tools open-source yang digunakan untuk menganalisis kode JavaScript. ESLint akan mengecek kode JavaScript yang kita buat apakah ada kesalahan atau tidak. Jika ada kesalahan, ESLint akan memberikan laporan error.',
-      archived: false,
-      createdAt: '2023-07-12T04:27:34.572Z',
-    },
-    {
-      id: 4,
-      title: 'Prettier',
-      body: 'Prettier merupakan tools open-source yang digunakan untuk memformat kode JavaScript. Prettier akan membaca kode JavaScript yang kita buat, kemudian memformatnya sesuai dengan aturan yang telah ditentukan.',
-      archived: true,
-      createdAt: '2023-08-11T04:27:34.572Z',
-    },
-    {
-      id: 5,
-      title: 'React',
-      body: 'React merupakan library open-source yang digunakan untuk membangun antarmuka pengguna (user interface/UI) pada aplikasi web. React dibuat oleh Jordan Walke, seorang software engineer dari Facebook. React pertama kali diterapkan pada News Feed Facebook pada 2011 dan kemudian pada Instagram pada 2012.',
-      archived: true,
-      createdAt: '2023-09-10T04:27:34.572Z',
-    },
-    {
-      id: 6,
-      title: 'React Router',
-      body: 'React Router merupakan library open-source yang digunakan untuk membuat aplikasi React yang memiliki banyak halaman. React Router akan memanipulasi URL pada browser sehingga ketika URL berubah, React Router akan memastikan komponen yang sesuai dengan URL ditampilkan pada halaman tersebut.',
-      archived: true,
-      createdAt: '2023-10-09T04:27:34.572Z',
-    },
-  ]
+const getInitialData = () => [
+  {
+    id: 1,
+    title: 'Babel',
+    body: 'Babel merupakan tools open-source yang digunakan untuk mengubah sintaks ECMAScript 2015+ menjadi sintaks yang didukung oleh JavaScript engine versi lama. Babel sering dipakai ketika kita menggunakan sintaks terbaru termasuk sintaks JSX.',
+    createdAt: '2022-04-14T04:27:34.572Z',
+    archived: false,
+  },
+  {
+    id: 2,
+    title: 'Functional Component',
+    body: 'Functional component merupakan React component yang dibuat menggunakan fungsi JavaScript. Agar fungsi JavaScript dapat disebut component ia harus mengembalikan React element dan dipanggil layaknya React component.',
+    createdAt: '2022-04-14T04:27:34.572Z',
+    archived: false,
+  },
+  {
+    id: 3,
+    title: 'Modularization',
+    body: 'Dalam konteks pemrograman JavaScript, modularization merupakan teknik dalam memecah atau menggunakan kode dalam berkas JavaScript secara terpisah berdasarkan tanggung jawabnya masing-masing.',
+    createdAt: '2022-04-14T04:27:34.572Z',
+    archived: false,
+  },
+  {
+    id: 4,
+    title: 'Lifecycle',
+    body: 'Dalam konteks React component, lifecycle merupakan kumpulan method yang menjadi siklus hidup mulai dari component dibuat (constructor), dicetak (render), pasca-cetak (componentDidMount), dan sebagainya. ',
+    createdAt: '2022-04-14T04:27:34.572Z',
+    archived: false,
+  },
+  {
+    id: 5,
+    title: 'ESM',
+    body: 'ESM (ECMAScript Module) merupakan format modularisasi standar JavaScript.',
+    createdAt: '2022-04-14T04:27:34.572Z',
+    archived: false,
+  },
+  {
+    id: 6,
+    title: 'Module Bundler',
+    body: 'Dalam konteks pemrograman JavaScript, module bundler merupakan tools yang digunakan untuk menggabungkan seluruh modul JavaScript yang digunakan oleh aplikasi menjadi satu berkas.',
+    createdAt: '2022-04-14T04:27:34.572Z',
+    archived: false,
+  },
+]
+
+const showFormattedDate = (date) => {
+  const options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }
+  return new Date(date).toLocaleDateString('id-ID', options)
 }
 
-export default getData
+export { getInitialData, showFormattedDate }

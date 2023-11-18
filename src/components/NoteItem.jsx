@@ -6,6 +6,7 @@ import {
   faExchange,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { showFormattedDate } from '../utilities/getData'
 
 const NoteItem = ({
   title,
@@ -15,18 +16,11 @@ const NoteItem = ({
   onArchive,
   onDelete,
 }) => {
-  const dateForHuman = new Date(createdAt).toLocaleDateString('id-ID', {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  })
-
   return (
     <div className={styles.card}>
       <div className={styles.card_content}>
         <h3>{title}</h3>
-        <p className={styles.date}>{dateForHuman}</p>
+        <p className={styles.date}>{showFormattedDate(createdAt)}</p>
         <hr className={styles.divider} />
         <p>{body}</p>
       </div>

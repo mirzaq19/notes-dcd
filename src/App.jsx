@@ -3,11 +3,11 @@ import Layout from './components/Layout'
 import NotesForm from './components/NotesForm'
 import Search from './components/Search'
 import ThemeWrapper from './components/ThemeWrapper'
-import getData from './utilities/getData'
+import { getInitialData } from './utilities/getData'
 import { useState } from 'react'
 
 function App() {
-  const [notes, setNotes] = useState(getData())
+  const [notes, setNotes] = useState(getInitialData)
   const [searchNotes, setSearchNotes] = useState([])
   const [keyword, setKeyword] = useState('')
 
