@@ -15,6 +15,7 @@ const Footer = () => {
             href="https://github.com/mirzaq19"
             target="_blank"
             rel="noreferrer"
+            className={styles.animated_link}
           >
             Mirzaq
           </a>
