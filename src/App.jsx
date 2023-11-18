@@ -8,7 +8,8 @@ import { useState } from 'react'
 
 function App() {
   const [notes, setNotes] = useState(getData())
-  const [searchText, setSearchText] = useState('')
+  const [searchNotes, setSearchNotes] = useState([])
+  const [keyword, setKeyword] = useState('')
 
   const onArchiveHandler = (id) => {
     const newNotes = notes.map((note) => {
@@ -37,13 +38,22 @@ function App() {
     ])
   }
 
+  const onSearchHandler = (keyword) => {
+    setKeyword(keyword)
+    const newNotes = notes.filter((note) => {
+      const title = note.title.toLowerCase()
+      return title.includes(keyword.toLowerCase())
+    })
+    setSearchNotes(newNotes)
+  }
+
   return (
     <ThemeWrapper>
       <Layout>
         <NotesForm onAddNote={onAddNoteHandler} />
-        <Search value={searchText} setSearchText={setSearchText} />
+        <Search value={keyword} setValue={onSearchHandler} />
         <NoteList
-          notes={notes}
+          notes={searchNotes.length > 0 ? searchNotes : notes}
           onArchive={onArchiveHandler}
           onDelete={onDeleteHandler}
         />
