@@ -4,7 +4,7 @@ import NotesForm from './components/NotesForm'
 import Search from './components/Search'
 import ThemeWrapper from './components/ThemeWrapper'
 import { getInitialData } from './utilities/getData'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function App() {
   const [notes, setNotes] = useState(getInitialData)
@@ -38,22 +38,21 @@ function App() {
     ])
   }
 
-  const onSearchHandler = (keyword) => {
-    setKeyword(keyword)
+  useEffect(() => {
     const newNotes = notes.filter((note) => {
       const title = note.title.toLowerCase()
       return title.includes(keyword.toLowerCase())
     })
     setSearchNotes(newNotes)
-  }
+  }, [keyword, notes])
 
   return (
     <ThemeWrapper>
       <Layout>
         <NotesForm onAddNote={onAddNoteHandler} />
-        <Search value={keyword} setValue={onSearchHandler} />
+        <Search value={keyword} setValue={(value) => setKeyword(value)} />
         <NoteList
-          notes={searchNotes.length > 0 ? searchNotes : notes}
+          notes={searchNotes}
           onArchive={onArchiveHandler}
           onDelete={onDeleteHandler}
         />
