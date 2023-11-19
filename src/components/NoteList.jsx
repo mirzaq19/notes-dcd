@@ -8,9 +8,9 @@ const NoteList = ({ notes, onArchive, onDelete }) => {
   return (
     <>
       <Section title="Catatan Aktif">
-        <div className={styles.cards}>
-          {activeNotes.length > 0 ? (
-            activeNotes.map((note) => (
+        {activeNotes.length > 0 ? (
+          <div className={styles.cards}>
+            {activeNotes.map((note) => (
               <NoteItem
                 key={note.id}
                 title={note.title}
@@ -20,16 +20,18 @@ const NoteList = ({ notes, onArchive, onDelete }) => {
                 onArchive={() => onArchive(note.id)}
                 onDelete={() => onDelete(note.id)}
               />
-            ))
-          ) : (
+            ))}
+          </div>
+        ) : (
+          <div className={styles.cards_empty}>
             <p>Tidak ada catatan aktif</p>
-          )}
-        </div>
+          </div>
+        )}
       </Section>
       <Section title="Arsip">
-        <div className={styles.cards}>
-          {archivedNotes.length > 0 ? (
-            archivedNotes.map((note) => (
+        {archivedNotes.length > 0 ? (
+          <div className={styles.cards}>
+            {archivedNotes.map((note) => (
               <NoteItem
                 key={note.id}
                 title={note.title}
@@ -39,11 +41,13 @@ const NoteList = ({ notes, onArchive, onDelete }) => {
                 onArchive={() => onArchive(note.id)}
                 onDelete={() => onDelete(note.id)}
               />
-            ))
-          ) : (
+            ))}
+          </div>
+        ) : (
+          <div className={styles.cards_empty}>
             <p>Tidak ada catatan di arsip</p>
-          )}
-        </div>
+          </div>
+        )}
       </Section>
     </>
   )
