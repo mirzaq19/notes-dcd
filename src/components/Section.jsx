@@ -1,4 +1,4 @@
-import styles from './Section.module.scss'
+import styles from '@/styles/Section.module.scss'
 
 const Section = ({ title, children, divider = true }) => {
   return (

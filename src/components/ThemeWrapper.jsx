@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ThemeProvider } from '../contexts/theme'
+import { ThemeProvider } from '@/contexts/theme'
 const ThemeWrapper = ({ children }) => {
   const userPrefersDark =
     window.matchMedia &&

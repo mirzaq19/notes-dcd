@@ -1,7 +1,7 @@
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import styles from './Footer.module.scss'
+import styles from '@/styles/Footer.module.scss'
 
 const Footer = () => {
   return (

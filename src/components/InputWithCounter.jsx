@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import styles from './Input.module.scss'
+import styles from '@/styles/Input.module.scss'
 
 const Input = ({ required, placeholder, value, setValue, maxCounter = 50 }) => {
   const [counter, setCounter] = useState(maxCounter)

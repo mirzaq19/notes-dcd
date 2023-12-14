@@ -1,5 +1,5 @@
-import useTheme from '../contexts/theme'
-import styles from './ThemeToggle.module.scss'
+import useTheme from '@/contexts/theme'
+import styles from '@/styles/ThemeToggle.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 

@@ -1,12 +1,12 @@
-import Button from './Button'
-import styles from './NoteItem.module.scss'
+import Button from '@/components/Button'
+import styles from '@/styles/NoteItem.module.scss'
 import {
   faArchive,
   faTrashAlt,
   faExchange,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { showFormattedDate } from '../utilities/getData'
+import { showFormattedDate } from '@/utilities/getData'
 
 const NoteItem = ({
   title,

@@ -1,5 +1,5 @@
-import styles from './Navbar.module.scss'
-import ThemeToggle from './ThemeToggle'
+import styles from '@/styles/Navbar.module.scss'
+import ThemeToggle from '@/components/ThemeToggle'
 
 const Navbar = () => {
   return (

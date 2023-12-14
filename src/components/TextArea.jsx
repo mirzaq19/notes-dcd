@@ -1,4 +1,4 @@
-import styles from './TextArea.module.scss'
+import styles from '@/styles/TextArea.module.scss'
 const TextArea = ({ required, placeholder, value, setValue }) => {
   const onChangeHandler = (e) => {
     setValue(e.target.value)

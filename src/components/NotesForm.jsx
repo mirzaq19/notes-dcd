@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import InputWithCounter from './InputWithCounter'
+import InputWithCounter from '@/components/InputWithCounter'
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import TextArea from './TextArea'
-import Section from './Section'
-import Button from './Button'
+import TextArea from '@/components/TextArea'
+import Section from '@/components/Section'
+import Button from '@/components/Button'
 
 const NotesForm = ({ onAddNote }) => {
   const [note, setNote] = useState({

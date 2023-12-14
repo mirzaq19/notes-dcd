@@ -1,6 +1,6 @@
-import NoteItem from './NoteItem'
-import Section from './Section'
-import styles from './NoteList.module.scss'
+import NoteItem from '@/components/NoteItem'
+import Section from '@/components/Section'
+import styles from '@/styles/NoteList.module.scss'
 
 const NoteList = ({ notes, onArchive, onDelete }) => {
   const activeNotes = notes.filter((note) => !note.archived)

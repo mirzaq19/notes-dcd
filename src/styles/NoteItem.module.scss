@@ -1,4 +1,4 @@
-@import '../styles/variables';
+@import '@/styles/variables';
 
 [data-theme='dark'] {
   .date {
@@ -13,11 +13,11 @@
   padding: 1rem;
   width: 100%;
   border-radius: 10px;
-  box-shadow: 0 0 5px 1px #f700ff7c;
+  box-shadow: 0 0 0px 1px #f700ff7c;
   transition: all 0.2s ease-in-out;
   &:hover {
     box-shadow: 0 0 10px 2px #f700ff7c;
-    transform: scale(1.01);
+    transform: scale(1.05);
   }
 
   .card_content {
