@@ -5,6 +5,7 @@ import Container from '@/components/layout/Container'
 import Footer from '@/components/layout/Footer'
 import AddNote from '@/pages/AddNote'
 import Archive from '@/pages/Archive'
+import DetailNote from '@/pages/DetailNote'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/add" element={<AddNote />} />
             <Route path="/archives" element={<Archive />} />
+            <Route path="/notes/:id" element={<DetailNote />} />
           </Routes>
           <Footer />
         </Container>
