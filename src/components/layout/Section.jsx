@@ -7,7 +7,7 @@ const Section = ({ title, children, className, divider = true, ...rest }) => {
       <h2 className="mb-2">{title}</h2>
       {children}
       {divider && (
-        <hr className="mt-1 border-0 border-b-2 border-b-secondary/30" />
+        <hr className="mt-6 border-0 border-b-2 border-b-secondary/30" />
       )}
     </section>
   )
