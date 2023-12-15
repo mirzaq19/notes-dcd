@@ -1,47 +1,35 @@
-import Button from '@/components/buttons/Button'
-import styles from '@/styles/NoteItem.module.scss'
-import {
-  faArchive,
-  faTrashAlt,
-  faExchange,
-} from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { showFormattedDate } from '@/utilities/getData'
+import { showFormattedDate } from '@/utilities/data'
+import clsx from 'clsx'
+import PropTypes from 'prop-types'
+import CustomLink from '@/components/links/CustomLink'
 
-const NoteItem = ({
-  title,
-  body,
-  archived,
-  createdAt,
-  onArchive,
-  onDelete,
-}) => {
+const NoteItem = ({ className, id, title, body, createdAt, ...rest }) => {
   return (
-    <div className={styles.card}>
-      <div className={styles.card_content}>
-        <h3>{title}</h3>
-        <p className={styles.date}>{showFormattedDate(createdAt)}</p>
-        <hr className={styles.divider} />
-        <p>{body}</p>
+    <div
+      className={clsx(
+        'card gap-2 p-4',
+        'border border-secondary rounded-md shadow-sm',
+        className
+      )}
+      {...rest}
+    >
+      <div className="text-center">
+        <h3>
+          <CustomLink href={`/notes/${id}`}>{title}</CustomLink>
+        </h3>
+        <p className="text-gray-600">{showFormattedDate(createdAt)}</p>
       </div>
-      <div className={styles.card_button}>
-        <Button full={true} onClick={onArchive}>
-          {archived ? (
-            <>
-              <FontAwesomeIcon icon={faExchange} /> Pindahkan
-            </>
-          ) : (
-            <>
-              <FontAwesomeIcon icon={faArchive} /> Arsipkan
-            </>
-          )}
-        </Button>
-        <Button full={true} onClick={onDelete}>
-          <FontAwesomeIcon icon={faTrashAlt} /> Hapus
-        </Button>
-      </div>
+      <hr className="" />
+      <p>{body}</p>
     </div>
   )
+}
+
+NoteItem.propTypes = {
+  className: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
 }
 
 export default NoteItem
