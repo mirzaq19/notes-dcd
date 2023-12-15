@@ -13,6 +13,10 @@
     --tw-clr-secondary: 221 221 221;
   }
 
+  ::selection {
+    background-color: rgba(var(--tw-clr-accent-peach) / 0.2);
+  }
+
   /* #region  /**=========== Default Typography =========== */
   h1 {
     @apply text-2xl font-bold md:text-3xl;
