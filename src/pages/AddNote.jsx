@@ -51,7 +51,7 @@ const AddNote = () => {
             setValue={onBodyChangeHandler}
           />
 
-          <Button full={true}>
+          <Button className="w-full">
             <FontAwesomeIcon icon={faCirclePlus} />
             Buat
           </Button>
