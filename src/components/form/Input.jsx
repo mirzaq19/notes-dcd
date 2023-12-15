@@ -10,7 +10,7 @@ const Input = ({ className, value, setValue, ...rest }) => {
   return (
     <input
       className={clsx(
-        'w-full mb-4 inline-block p-3 rounded-md outline-none transition duration-300 shadow-sm',
+        'w-full p-3 rounded-md outline-none transition duration-300 shadow-sm',
         'border border-secondary focus:border-accent-peach focus:ring-1 focus:ring-accent-peach',
         className
       )}
