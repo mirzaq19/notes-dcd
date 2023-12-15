@@ -18,7 +18,7 @@ const NoteList = ({ className, notes, ...rest }) => {
           ))}
         </div>
       ) : (
-        <p className="text-center border-2 border-dotted border-secondary rounded py-8 text-gray-400">
+        <p className="text-center border-2 border-dotted border-secondary rounded py-8 text-gray-600">
           Tidak ada catatan.
         </p>
       )}
