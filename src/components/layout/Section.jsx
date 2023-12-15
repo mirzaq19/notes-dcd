@@ -1,13 +1,23 @@
-import styles from '@/styles/Section.module.scss'
+import clsx from 'clsx'
+import PropTypes from 'prop-types'
 
-const Section = ({ title, children, divider = true }) => {
+const Section = ({ title, children, className, divider = true, ...rest }) => {
   return (
-    <section className={styles.container}>
-      <h2 className={styles.title}>{title}</h2>
+    <section className={clsx('my-4', className)} {...rest}>
+      <h2 className="mb-2">{title}</h2>
       {children}
-      {divider && <hr className={styles.divider} />}
+      {divider && (
+        <hr className="mt-1 border-0 border-b-2 border-b-secondary/30" />
+      )}
     </section>
   )
+}
+
+Section.propTypes = {
+  title: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+  divider: PropTypes.bool,
 }
 
 export default Section
