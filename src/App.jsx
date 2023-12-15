@@ -3,6 +3,7 @@ import Home from '@/pages/Home'
 import Navbar from '@/components/layout/Navbar'
 import Container from '@/components/layout/Container'
 import Footer from '@/components/layout/Footer'
+import AddNote from '@/pages/AddNote'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Container>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/add" element={<AddNote />} />
           </Routes>
           <Footer />
         </Container>

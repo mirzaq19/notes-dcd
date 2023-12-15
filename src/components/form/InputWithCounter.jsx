@@ -1,12 +1,19 @@
 import { useEffect, useState } from 'react'
-import styles from '@/styles/Input.module.scss'
+import Input from '@/components/form/Input'
+import clsx from 'clsx'
+import PropTypes from 'prop-types'
 
-const Input = ({ required, placeholder, value, setValue, maxCounter = 50 }) => {
+const InputWithCounter = ({
+  className = '',
+  placeholder = '',
+  value,
+  setValue,
+  maxCounter = 50,
+  ...rest
+}) => {
   const [counter, setCounter] = useState(maxCounter)
 
-  const onChangeHandler = (e) => {
-    const value = e.target.value
-
+  const onChangeHandler = (value) => {
     if (value.length <= maxCounter) {
       setCounter(maxCounter - value.length)
       setValue(value)
@@ -18,20 +25,25 @@ const Input = ({ required, placeholder, value, setValue, maxCounter = 50 }) => {
   }, [maxCounter, value])
 
   return (
-    <>
-      <div className={styles.counter}>
+    <div className={clsx('mb-4', className)} {...rest}>
+      <div className="text-end mb-1">
         <span>Sisa karakter: {counter}</span>
       </div>
-      <input
-        required={required}
-        onChange={onChangeHandler}
-        value={value}
-        className={styles.input}
-        type="text"
+      <Input
         placeholder={placeholder}
+        value={value}
+        setValue={onChangeHandler}
       />
-    </>
+    </div>
   )
 }
 
-export default Input
+InputWithCounter.propTypes = {
+  className: PropTypes.string,
+  placeholder: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  setValue: PropTypes.func.isRequired,
+  maxCounter: PropTypes.number,
+}
+
+export default InputWithCounter
