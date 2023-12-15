@@ -1,4 +1,4 @@
-import Button from '@/components/Button'
+import Button from '@/components/buttons/Button'
 import styles from '@/styles/NoteItem.module.scss'
 import {
   faArchive,

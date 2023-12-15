@@ -1,5 +1,5 @@
-import Input from '@/components/Input'
-import Section from '@/components/Section'
+import Input from '@/components/form/Input'
+import Section from '@/components/layout/Section'
 
 const Search = ({ value, setValue }) => {
   return (

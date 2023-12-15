@@ -1,5 +1,5 @@
 import NoteItem from '@/components/NoteItem'
-import Section from '@/components/Section'
+import Section from '@/components/layout/Section'
 import styles from '@/styles/NoteList.module.scss'
 
 const NoteList = ({ notes, onArchive, onDelete }) => {
