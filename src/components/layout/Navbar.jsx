@@ -15,10 +15,10 @@ const Navbar = ({ className, ...rest }) => {
     >
       <Container className="flex justify-between">
         <nav className="flex justify-between items-center gap-2 py-4 lg:gap-4">
-          <h1 className="text-xl md:text-2xl lg:text-3xl">
+          <h1>
             <UnstyledLink href="/">NotesApp</UnstyledLink>
           </h1>
-          <ul className="flex gap-1 text-xs font-medium md:text-base">
+          <ul className="flex gap-1 text-sm font-medium md:text-base">
             <li className="transition duration-300 ease-in-out rounded-md hover:bg-secondary/40">
               <UnstyledLink className="inline-block p-2" href="/add">
                 Add
