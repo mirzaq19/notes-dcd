@@ -15,6 +15,9 @@ export default {
           grape: 'rgb(var(--tw-clr-accent-grape) / <alpha-value>)',
         },
       },
+      boxShadow: {
+        accent: '0 0 10px 2px rgb(var(--tw-clr-accent-peach) / 0.5)',
+      },
       fontFamily: {
         sans: ['Inter', ...fontFamily.sans],
       },
