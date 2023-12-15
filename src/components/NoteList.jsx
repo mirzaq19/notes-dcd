@@ -4,17 +4,25 @@ import PropTypes from 'prop-types'
 
 const NoteList = ({ className, notes, ...rest }) => {
   return (
-    <div
-      className={clsx(
-        'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3',
-        className
+    <>
+      {notes.length !== 0 ? (
+        <div
+          className={clsx(
+            'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3',
+            className
+          )}
+          {...rest}
+        >
+          {notes.map((note) => (
+            <NoteItem key={note.id} {...note} />
+          ))}
+        </div>
+      ) : (
+        <p className="text-center border-2 border-dotted border-secondary rounded py-8 text-gray-400">
+          Tidak ada catatan.
+        </p>
       )}
-      {...rest}
-    >
-      {notes.map((note) => (
-        <NoteItem key={note.id} {...note} />
-      ))}
-    </div>
+    </>
   )
 }
 
