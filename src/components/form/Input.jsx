@@ -1,6 +1,7 @@
-import styles from '@/styles/Input.module.scss'
+import clsx from 'clsx'
+import PropTypes from 'prop-types'
 
-const Input = ({ required, placeholder, value, setValue }) => {
+const Input = ({ className, value, setValue, ...rest }) => {
   const onChangeHandler = (e) => {
     const value = e.target.value
     setValue(value)
@@ -8,14 +9,23 @@ const Input = ({ required, placeholder, value, setValue }) => {
 
   return (
     <input
-      className={styles.input}
-      required={required}
+      className={clsx(
+        'w-full mb-4 inline-block p-3 rounded-md outline-none transition duration-300 shadow-sm',
+        'border border-secondary focus:border-accent-peach focus:ring-1 focus:ring-accent-peach',
+        className
+      )}
       type="text"
-      placeholder={placeholder}
       value={value}
       onChange={onChangeHandler}
+      {...rest}
     />
   )
+}
+
+Input.propTypes = {
+  className: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  setValue: PropTypes.func.isRequired,
 }
 
 export default Input
