@@ -30,4 +30,45 @@
     @apply text-sm md:text-base;
   }
   /* #endregion  /**======== Default Typography =========== */
+  .min-h-main {
+    @apply min-h-[calc(100vh-144px)];
+  }
+}
+
+@layer utilities {
+  .animated-underline {
+    position: relative;
+    /* padding-bottom: 0.2rem; */
+  }
+  .animated-underline::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.15rem;
+    background-color: rgb(var(--tw-clr-accent-peach));
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 300ms, transform 300ms;
+  }
+  .animated-underline:hover::after {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(var(--tw-clr-secondary));
+    padding: 1rem;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 0px 1px rgb(var(--tw-clr-accent-peach) / 0.2);
+    transition: all 0.2s ease-in-out;
+  }
+  .card:hover {
+    box-shadow: 0 0 4px 2px rgb(var(--tw-clr-accent-peach) / 0.4);
+    transform: scale(1.02);
+  }
 }
