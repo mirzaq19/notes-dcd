@@ -19,8 +19,8 @@ const NoteItem = ({ className, id, title, body, createdAt, ...rest }) => {
         </h3>
         <p className="text-gray-600">{showFormattedDate(createdAt)}</p>
       </div>
-      <hr className="" />
-      <p>{body}</p>
+      <hr className="border-0 border-b border-secondary" />
+      <p className="line-clamp-6 text-ellipsis">{body}</p>
     </div>
   )
 }
