@@ -1,40 +1,53 @@
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import styles from '@/styles/Footer.module.scss'
+import { FaHeart, FaLinkedin, FaGithub } from 'react-icons/fa'
+import {} from 'react-icons/fa'
+import clsx from 'clsx'
+import UnstyledLink from '../links/UnstyledLink'
+import CustomLink from '../links/CustomLink'
+import PropTypes from 'prop-types'
 
-const Footer = () => {
+const Footer = ({ className, ...rest }) => {
   return (
-    <footer className={styles.footer}>
-      <p>
-        <span>&copy; NotesApp 2023 | Made with</span>
-        <FontAwesomeIcon icon={faHeart} className={styles.heart} />
+    <footer
+      className={clsx(
+        'flex justify-between border-t-2 border-t-secondary/40 py-6',
+        className
+      )}
+      {...rest}
+    >
+      <div className="flex gap-1 items-center">
         <span>
-          by{' '}
-          <a
-            href="https://github.com/mirzaq19"
-            target="_blank"
-            rel="noreferrer"
-            className={styles.animated_link}
-          >
-            Mirzaq
-          </a>
+          &copy;<span className="font-medium">NotesApp 2023</span> | Made with
         </span>
-      </p>
-      <p className="social-media">
-        <a
-          href="https://linkedin.com/in/mirzaq"
-          target="_blank"
-          rel="noreferrer"
+        <FaHeart className="text-accent-peach" />
+        <CustomLink
+          className="animated-underline hover:text-accent-peach"
+          href="https://github.com/mirzaq19"
         >
-          <FontAwesomeIcon icon={faLinkedin} className={styles.social_icon} />
-        </a>
-        <a href="https://github.com/mirzaq19" target="_blank" rel="noreferrer">
-          <FontAwesomeIcon icon={faGithub} className={styles.social_icon} />
-        </a>
-      </p>
+          Mirzaq
+        </CustomLink>
+      </div>
+      <div className="flex gap-1 text-2xl">
+        {socials.map((social) => (
+          <UnstyledLink
+            className="transition-colors duration-300 ease-in-out hover:text-accent-peach"
+            key={social.href}
+            href="https://github.com/mirzaq19"
+          >
+            {social.icon}
+          </UnstyledLink>
+        ))}
+      </div>
     </footer>
   )
 }
+
+Footer.propTypes = {
+  className: PropTypes.string,
+}
+
+const socials = [
+  { href: 'https://linkedin.com/in/mirzaq', icon: <FaLinkedin /> },
+  { href: 'https://github.com/mirzaq19', icon: <FaGithub /> },
+]
 
 export default Footer
