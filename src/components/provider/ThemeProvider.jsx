@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { ThemeProvider } from '@/contexts/theme'
-const ThemeWrapper = ({ children }) => {
+import { ThemeContext } from '@/contexts/theme'
+const ThemeProvider = ({ children }) => {
   const userPrefersDark =
     window.matchMedia &&
     window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -21,13 +21,17 @@ const ThemeWrapper = ({ children }) => {
   }
 
   useEffect(() => {
-    document.querySelector('body').setAttribute('data-theme', themeMode)
+    document.querySelector('html').setAttribute('data-theme', themeMode)
+    document
+      .querySelector('html')
+      .classList.toggle('dark', themeMode === 'dark')
+    document.querySelector('html').style.colorScheme = themeMode
   }, [themeMode])
   return (
-    <ThemeProvider value={{ themeMode, lightTheme, darkTheme }}>
+    <ThemeContext.Provider value={{ themeMode, lightTheme, darkTheme }}>
       {children}
-    </ThemeProvider>
+    </ThemeContext.Provider>
   )
 }
 
-export default ThemeWrapper
+export default ThemeProvider

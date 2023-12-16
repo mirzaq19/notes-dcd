@@ -1,5 +1,5 @@
+import useTheme from '@/contexts/theme'
 import clsx from 'clsx'
-import { useState } from 'react'
 import { IoSunnyOutline, IoMoonOutline } from 'react-icons/io5'
 
 const IconContainer = ({ children }) => {
@@ -15,7 +15,15 @@ const IconContainer = ({ children }) => {
 }
 
 const ThemeButton = ({ className, ...rest }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false)
+  const { themeMode, lightTheme, darkTheme } = useTheme()
+
+  const onThemeChangeHandler = () => {
+    if (themeMode === 'dark') {
+      lightTheme()
+    } else {
+      darkTheme()
+    }
+  }
 
   return (
     <button
@@ -26,13 +34,13 @@ const ThemeButton = ({ className, ...rest }) => {
         'bg-gradient-to-br from-accent-peach to-accent-grape',
         className
       )}
-      onClick={() => setIsDarkMode((prev) => !prev)}
+      onClick={onThemeChangeHandler}
       {...rest}
     >
       <div
         className={clsx(
           'transition-transform duration-300 ease-in-out',
-          isDarkMode ? 'translate-x-0' : '-translate-y-12'
+          themeMode === 'dark' ? '-translate-y-12' : 'translate-x-0'
         )}
       >
         <IconContainer>
