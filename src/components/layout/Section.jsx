@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
 
-const Section = ({ title, children, className, divider = true, ...rest }) => {
+const Section = ({ title, children, className, divider = false, ...rest }) => {
   return (
     <section className={clsx('my-4', className)} {...rest}>
       <h2 className="mb-2">{title}</h2>
