@@ -35,7 +35,7 @@ const DetailNote = () => {
   return (
     <div className="min-h-main my-10">
       <h1>{note.title}</h1>
-      <p className="text-gray-500 text-xs my-1 tracking-wider md:text-sm">
+      <p className="text-gray-500 dark:text-gray-400 text-xs my-1 tracking-wider md:text-sm">
         {showFormattedDate(note.createdAt)}
       </p>
       <p>{parse(note.body)}</p>

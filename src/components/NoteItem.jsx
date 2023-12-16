@@ -23,7 +23,7 @@ const NoteItem = ({ className, id, title, body, createdAt, ...rest }) => {
             {title}
           </CustomLink>
         </h3>
-        <p className="text-gray-500 text-xs mt-1 tracking-wider md:text-sm">
+        <p className="text-gray-500 dark:text-gray-400 text-xs mt-1 tracking-wider md:text-sm">
           {showFormattedDate(createdAt)}
         </p>
       </div>
