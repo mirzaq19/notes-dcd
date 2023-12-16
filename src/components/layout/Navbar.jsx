@@ -3,8 +3,10 @@ import Container from '@/components/layout/Container'
 import clsx from 'clsx'
 import UnstyledLink from '@/components/links/UnstyledLink'
 import ThemeButton from '@/components/buttons/ThemeButton'
+import { useLocation } from 'react-router-dom'
 
 const Navbar = ({ className, ...rest }) => {
+  const { pathname } = useLocation()
   return (
     <header
       className={clsx(
@@ -20,16 +22,19 @@ const Navbar = ({ className, ...rest }) => {
             <UnstyledLink href="/">NotesApp</UnstyledLink>
           </h1>
           <ul className="flex gap-1 text-sm font-medium md:text-base">
-            <li className="transition duration-300 ease-in-out rounded-md hover:bg-secondary/40">
-              <UnstyledLink className="inline-block p-2" href="/add">
-                Add
-              </UnstyledLink>
-            </li>
-            <li className="transition duration-300 ease-in-out rounded-md hover:bg-secondary/40">
-              <UnstyledLink className="inline-block p-2" href="/archives">
-                Archives
-              </UnstyledLink>
-            </li>
+            {links.map(({ href, label }) => (
+              <li
+                key={href}
+                className={clsx(
+                  'transition duration-300 ease-in-out rounded-md hover:bg-secondary/40 hover:shadow dark:hover:bg-zinc-700',
+                  pathname === href && 'bg-secondary/40 shadow dark:bg-zinc-700'
+                )}
+              >
+                <UnstyledLink className="inline-block py-2 px-3" href={href}>
+                  {label}
+                </UnstyledLink>
+              </li>
+            ))}
           </ul>
         </nav>
         <ThemeButton />
@@ -42,5 +47,10 @@ const Navbar = ({ className, ...rest }) => {
 Navbar.propTypes = {
   className: PropTypes.string,
 }
+
+const links = [
+  { href: '/add', label: 'Add' },
+  { href: '/archives', label: 'Archives' },
+]
 
 export default Navbar
