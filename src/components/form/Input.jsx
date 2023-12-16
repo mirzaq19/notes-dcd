@@ -12,6 +12,7 @@ const Input = ({ className, value, setValue, ...rest }) => {
       className={clsx(
         'w-full p-3 rounded-md outline-none transition duration-300 shadow-sm',
         'border border-secondary focus:border-accent-peach focus:ring-1 focus:ring-accent-peach',
+        'bg-light/25 dark:bg-zinc-800',
         className
       )}
       type="text"
