@@ -10,6 +10,7 @@ const EditableDiv = ({ className = '', placeholder, setValue, ...rest }) => {
   return (
     <div
       className={clsx(
+        'bg-light/25 dark:bg-zinc-800',
         'empty:before:content-[attr(data-placeholder)] empty:before:text-gray-400',
         'w-full min-h-[12rem] mb-4 p-3 rounded-md outline-none transition duration-300 shadow-sm',
         'border border-secondary focus:border-accent-peach focus:ring-1 focus:ring-accent-peach',
