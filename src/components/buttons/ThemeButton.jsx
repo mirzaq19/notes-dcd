@@ -1,6 +1,7 @@
 import useTheme from '@/contexts/theme'
 import clsx from 'clsx'
 import { IoSunnyOutline, IoMoonOutline } from 'react-icons/io5'
+import PropTypes from 'prop-types'
 
 const IconContainer = ({ children }) => {
   return (
@@ -12,6 +13,10 @@ const IconContainer = ({ children }) => {
       {children}
     </div>
   )
+}
+
+IconContainer.propTypes = {
+  children: PropTypes.node.isRequired,
 }
 
 const ThemeButton = ({ className, ...rest }) => {
@@ -52,6 +57,10 @@ const ThemeButton = ({ className, ...rest }) => {
       </div>
     </button>
   )
+}
+
+ThemeButton.propTypes = {
+  className: PropTypes.string,
 }
 
 export default ThemeButton
