@@ -11,6 +11,7 @@ import Button from '@/components/buttons/Button'
 import { RiInboxArchiveFill, RiInboxUnarchiveFill } from 'react-icons/ri'
 import { FaTrashAlt } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
+import Error from '@/pages/Error'
 
 const DetailNote = () => {
   const navigate = useNavigate()
@@ -30,6 +31,16 @@ const DetailNote = () => {
   const onDeleteHandler = () => {
     deleteNote(id)
     navigate('/')
+  }
+
+  if (!note) {
+    return (
+      <Error
+        statusCode={404}
+        title="Not Found"
+        desc="Wah, halaman yang kamu cari ga ditemuin"
+      />
+    )
   }
 
   return (
