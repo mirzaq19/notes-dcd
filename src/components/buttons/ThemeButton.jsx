@@ -7,7 +7,7 @@ const IconContainer = ({ children }) => {
   return (
     <div
       className={clsx(
-        'flex justify-center items-center text-2xl w-12 h-12 bg-white'
+        'flex justify-center items-center text-2xl w-12 h-12 bg-white dark:bg-dark'
       )}
     >
       {children}
@@ -34,7 +34,7 @@ const ThemeButton = ({ className, ...rest }) => {
     <button
       className={clsx(
         'w-12 h-12 flex group justify-center items-start overflow-hidden',
-        'border-2 border-secondary hover:border-[#c100b3] hover:text-[#c100b3] rounded-md',
+        'border border-secondary hover:border-accent-peach hover:text-accent-peach rounded-md',
         'transition-colors duration-300 ease-in-out',
         'bg-gradient-to-br from-accent-peach to-accent-grape',
         className
