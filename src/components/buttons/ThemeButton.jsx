@@ -7,7 +7,9 @@ const IconContainer = ({ children }) => {
   return (
     <div
       className={clsx(
-        'flex justify-center items-center text-2xl w-12 h-12 bg-white dark:bg-dark'
+        'flex justify-center items-center',
+        'bg-white dark:bg-dark',
+        'text-lg md:text-2xl w-8 h-8 md:w-12 md:h-12'
       )}
     >
       {children}
@@ -33,10 +35,11 @@ const ThemeButton = ({ className, ...rest }) => {
   return (
     <button
       className={clsx(
-        'w-12 h-12 flex group justify-center items-start overflow-hidden',
+        'flex group justify-center items-start overflow-hidden',
+        'bg-gradient-to-br from-accent-peach to-accent-grape',
+        'w-8 h-8 md:w-12 md:h-12',
         'border border-secondary hover:border-accent-peach hover:text-accent-peach rounded-md',
         'transition-colors duration-300 ease-in-out',
-        'bg-gradient-to-br from-accent-peach to-accent-grape',
         className
       )}
       onClick={onThemeChangeHandler}
@@ -45,7 +48,9 @@ const ThemeButton = ({ className, ...rest }) => {
       <div
         className={clsx(
           'transition-transform duration-300 ease-in-out',
-          themeMode === 'dark' ? '-translate-y-12' : 'translate-x-0'
+          themeMode === 'dark'
+            ? '-translate-y-8 md:-translate-y-12'
+            : 'translate-x-0'
         )}
       >
         <IconContainer>
