@@ -6,7 +6,12 @@ import Footer from '@/components/layout/Footer'
 import AddNote from '@/pages/AddNote'
 import Archive from '@/pages/Archive'
 import DetailNote from '@/pages/DetailNote'
-import Error from './pages/Error'
+import Error from '@/pages/Error'
+import Login from '@/pages/Login'
+import Register from '@/pages/Register'
+import PrivateRoute from '@/routes/PrivateRoute'
+import PublicRoute from './routes/PublicRoute'
+import { Toaster } from 'react-hot-toast'
 
 function App() {
   return (
@@ -15,10 +20,18 @@ function App() {
       <main>
         <Container>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/add" element={<AddNote />} />
-            <Route path="/archives" element={<Archive />} />
-            <Route path="/notes/:id" element={<DetailNote />} />
+            <Route path="/" element={<PrivateRoute />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/add" element={<AddNote />} />
+              <Route path="/archives" element={<Archive />} />
+              <Route path="/notes/:id" element={<DetailNote />} />
+            </Route>
+            <Route path="/login" element={<PublicRoute restricted />}>
+              <Route path="/login" element={<Login />} />
+            </Route>
+            <Route path="/register" element={<PublicRoute restricted />}>
+              <Route path="/register" element={<Register />} />
+            </Route>
             <Route
               path="/*"
               element={
@@ -30,6 +43,7 @@ function App() {
               }
             />
           </Routes>
+          <Toaster />
           <Footer />
         </Container>
       </main>
