@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
 
-const Input = ({ className, value, setValue, ...rest }) => {
+const Input = ({ className, type = 'text', value, setValue, ...rest }) => {
   const onChangeHandler = (e) => {
     const value = e.target.value
     setValue(value)
@@ -15,7 +15,7 @@ const Input = ({ className, value, setValue, ...rest }) => {
         'bg-light/25 dark:bg-zinc-800',
         className
       )}
-      type="text"
+      type={type}
       value={value}
       onChange={onChangeHandler}
       {...rest}
