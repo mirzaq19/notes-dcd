@@ -37,7 +37,7 @@ const reducer = (state, action) => {
 
 const AuthProvider = ({ children }) => {
   const [authState, authDispatch] = useReducer(reducer, {
-    authenticated: false,
+    authenticated: getAccessToken() ? true : false,
     user: null,
     loading: true,
   })
