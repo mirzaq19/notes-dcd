@@ -13,8 +13,8 @@ const Archive = () => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+    setLoading(true)
     const fetchNotes = async () => {
-      setLoading(true)
       try {
         const { data } = await getArchivedNotes()
         setNotes(data)
@@ -24,7 +24,9 @@ const Archive = () => {
         setLoading(false)
       }
     }
-    fetchNotes()
+    setTimeout(() => {
+      fetchNotes()
+    }, 200)
   }, [])
 
   const notesToRender = notes.filter((note) =>

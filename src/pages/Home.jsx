@@ -13,8 +13,8 @@ const Home = () => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+    setLoading(true)
     const fetchNotes = async () => {
-      setLoading(true)
       try {
         const { data } = await getActiveNotes()
         setNotes(data)
@@ -24,7 +24,9 @@ const Home = () => {
         setLoading(false)
       }
     }
-    fetchNotes()
+    setTimeout(() => {
+      fetchNotes()
+    }, 200)
   }, [])
 
   const notesToRender = notes.filter((note) =>
