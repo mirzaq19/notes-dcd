@@ -22,15 +22,13 @@ function App() {
           <Routes>
             <Route path="/" element={<PrivateRoute />}>
               <Route path="/" element={<Home />} />
-              <Route path="/add" element={<AddNote />} />
-              <Route path="/archives" element={<Archive />} />
-              <Route path="/notes/:id" element={<DetailNote />} />
+              <Route path="add" element={<AddNote />} />
+              <Route path="archives" element={<Archive />} />
+              <Route path="notes/:id" element={<DetailNote />} />
             </Route>
-            <Route path="/login" element={<PublicRoute restricted />}>
-              <Route path="/login" element={<Login />} />
-            </Route>
-            <Route path="/register" element={<PublicRoute restricted />}>
-              <Route path="/register" element={<Register />} />
+            <Route path="/" element={<PublicRoute restricted />}>
+              <Route path="login" element={<Login />} />
+              <Route path="register" element={<Register />} />
             </Route>
             <Route
               path="/*"
