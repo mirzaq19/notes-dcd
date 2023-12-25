@@ -1,4 +1,4 @@
-import { getUserLogged } from '@/utilities/network-data'
+import { getUserLogged, removeAccessToken } from '@/utilities/network-data'
 import useAuth from '@/contexts/auth'
 
 const useLogin = () => {
@@ -20,6 +20,8 @@ const useLogin = () => {
       sucessAction && sucessAction()
     } catch (error) {
       errorAction && errorAction(error)
+      removeAccessToken()
+      authDispatch({ type: 'LOGOUT' })
     } finally {
       authDispatch({ type: 'STOP_LOADING' })
       finalAction && finalAction()

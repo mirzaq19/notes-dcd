@@ -1,5 +1,9 @@
 import { AuthContext } from '@/contexts/auth'
-import { getAccessToken, getUserLogged } from '@/utilities/network-data'
+import {
+  getAccessToken,
+  getUserLogged,
+  removeAccessToken,
+} from '@/utilities/network-data'
 import { useEffect, useReducer } from 'react'
 
 const reducer = (state, action) => {
@@ -51,6 +55,8 @@ const AuthProvider = ({ children }) => {
         authDispatch({ type: 'POPULATE', payload: data })
       } catch (error) {
         console.log(error.message)
+        removeAccessToken()
+        authDispatch({ type: 'LOGOUT' })
       } finally {
         authDispatch({ type: 'STOP_LOADING' })
       }
