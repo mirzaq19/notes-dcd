@@ -16,36 +16,34 @@ const Login = () => {
   const navigate = useNavigate()
 
   const loginHandler = async () => {
-    setLogginIn(true)
-
     const { error, data } = await login({
       email,
       password,
     })
+    if (error) throw new Error('Login failed')
 
-    if (error) {
-      setLogginIn(false)
-      throw new Error('Login failed')
-    }
     putAccessToken(data.accessToken)
-
     await loginDispatch({
       sucessAction: () => navigate('/'),
       errorAction: (err) => console.log(err.message),
     })
-
-    setLogginIn(false)
   }
 
   const onSubmitHandler = async (e) => {
+    setLogginIn(true)
     e.preventDefault()
 
-    toast.promise(loginHandler(), {
-      loading: 'Loading',
-      success: 'Login successfully',
-      error: (err) =>
-        err.message ?? 'Something went wrong, please try again later!',
-    })
+    toast.promise(
+      loginHandler().finally(() => {
+        setLogginIn(false)
+      }),
+      {
+        loading: 'Loading',
+        success: 'Login successfully',
+        error: (err) =>
+          err.message ?? 'Something went wrong, please try again later!',
+      }
+    )
   }
 
   return (
