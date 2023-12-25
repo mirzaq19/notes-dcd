@@ -30,7 +30,7 @@ const Navbar = ({ className, ...rest }) => {
       <Container className="flex items-center justify-between">
         <nav className="flex justify-between items-center gap-2 py-4 lg:gap-4">
           <h1>
-            {authState.authentication ? (
+            {authState.authenticated ? (
               <UnstyledLink href="/">NotesApp</UnstyledLink>
             ) : (
               'NotesApp'
