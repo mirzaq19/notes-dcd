@@ -15,18 +15,21 @@ import ErrorPage from '@/pages/Error'
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import NoteDetailSkeleton from '@/components/skeleton/NoteDetailSkeleton'
+import { detailNote as detailNoteLocale } from '@/utilities/locale-data'
+import useLocale from '@/contexts/locale'
 
 const DetailNote = () => {
   const navigate = useNavigate()
   const { id } = useParams()
   const [note, setNote] = useState(null)
   const [loading, setLoading] = useState(true)
+  const { locale } = useLocale()
 
   useEffect(() => {
     const fetchNote = async () => {
       try {
         const { error, data } = await getNote(id)
-        if (error) throw new Error('Failed to fetch note')
+        if (error) throw new Error(detailNoteLocale[locale].error_fetching)
         setNote({
           ...data,
           body: parse(data.body),
@@ -38,16 +41,16 @@ const DetailNote = () => {
       }
     }
     fetchNote()
-  }, [id])
+  }, [id, locale])
 
   const onArchiveHandler = async () => {
     toast.promise(
       archiveNote(id).then(({ error }) => {
-        if (error) throw new Error('Archive note failed')
+        if (error) throw new Error(detailNoteLocale[locale].archiving.error)
       }),
       {
-        loading: 'Archiving note...',
-        success: 'Note archived',
+        loading: detailNoteLocale[locale].archiving.loading,
+        success: detailNoteLocale[locale].archiving.success,
         error: (err) => err.message,
       }
     )
@@ -58,11 +61,11 @@ const DetailNote = () => {
   const onUnarchiveHandler = () => {
     toast.promise(
       unarchiveNote(id).then(({ error }) => {
-        if (error) throw new Error('Archive note failed')
+        if (error) throw new Error(detailNoteLocale[locale].unarchiving.error)
       }),
       {
-        loading: 'Unarchiving note...',
-        success: 'Note unarchived',
+        loading: detailNoteLocale[locale].unarchiving.loading,
+        success: detailNoteLocale[locale].unarchiving.success,
         error: (err) => err.message,
       }
     )
@@ -73,11 +76,11 @@ const DetailNote = () => {
   const onDeleteHandler = () => {
     toast.promise(
       deleteNote(id).then(({ error }) => {
-        if (error) throw new Error('Delete note failed')
+        if (error) throw new Error(detailNoteLocale[locale].deleting.error)
       }),
       {
-        loading: 'Deleting note...',
-        success: 'Note deleted',
+        loading: detailNoteLocale[locale].deleting.loading,
+        success: detailNoteLocale[locale].deleting.success,
         error: (err) => err.message,
       }
     )
@@ -109,16 +112,18 @@ const DetailNote = () => {
             <div className="mt-6 flex gap-2 max-w-lg">
               {note.archived ? (
                 <Button onClick={onUnarchiveHandler}>
-                  <RiInboxUnarchiveFill className="text-lg" /> Keluarkan dari
-                  Arsip
+                  <RiInboxUnarchiveFill className="text-lg" />{' '}
+                  {detailNoteLocale[locale].unarchive}
                 </Button>
               ) : (
                 <Button onClick={onArchiveHandler}>
-                  <RiInboxArchiveFill className="text-lg" /> Arsipkan
+                  <RiInboxArchiveFill className="text-lg" />{' '}
+                  {detailNoteLocale[locale].archive}
                 </Button>
               )}
               <Button onClick={onDeleteHandler}>
-                <FaTrashAlt className="text-lg" /> Hapus
+                <FaTrashAlt className="text-lg" />{' '}
+                {detailNoteLocale[locale].delete}
               </Button>
             </div>
           </div>

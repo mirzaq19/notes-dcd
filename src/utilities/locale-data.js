@@ -209,3 +209,48 @@ export const navbar = {
     logout: 'Keluar',
   },
 }
+
+export const detailNote = {
+  en: {
+    error_fetching: 'Failed to fetch note',
+    archive: 'Archive',
+    archiving: {
+      loading: 'Archiving...',
+      success: 'Note archived',
+      error: 'Failed to archive note',
+    },
+    unarchive: 'Unarchive',
+    unarchiving: {
+      loading: 'Unarchiving...',
+      success: 'Note unarchived',
+      error: 'Failed to unarchive note',
+    },
+    delete: 'Delete',
+    deleting: {
+      loading: 'Deleting...',
+      success: 'Note deleted',
+      error: 'Failed to delete note',
+    },
+  },
+  id: {
+    error_fetching: 'Gagal mengambil catatan',
+    archive: 'Arsip',
+    archiving: {
+      loading: 'Mengarsip...',
+      success: 'Catatan diarsipkan',
+      error: 'Gagal mengarsipkan catatan',
+    },
+    unarchive: 'Buka arsip',
+    unarchiving: {
+      loading: 'Membuka arsip...',
+      success: 'Catatan dibuka dari arsip',
+      error: 'Gagal membuka catatan dari arsip',
+    },
+    delete: 'Hapus',
+    deleting: {
+      loading: 'Menghapus...',
+      success: 'Catatan dihapus',
+      error: 'Gagal menghapus catatan',
+    },
+  },
+}
