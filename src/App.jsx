@@ -12,8 +12,12 @@ import Register from '@/pages/Register'
 import PrivateRoute from '@/routes/PrivateRoute'
 import PublicRoute from './routes/PublicRoute'
 import { Toaster } from 'react-hot-toast'
+import { notFound as notFoundLocale } from '@/utilities/locale-data'
+import useLocale from '@/contexts/locale'
 
 function App() {
+  const { locale } = useLocale()
+
   return (
     <>
       <Navbar />
@@ -35,8 +39,8 @@ function App() {
               element={
                 <Error
                   statusCode={404}
-                  title="Not Found"
-                  desc="Wah, halaman yang kamu cari ga ditemuin"
+                  title={notFoundLocale[locale].title}
+                  desc={notFoundLocale[locale].subtitle}
                 />
               }
             />

@@ -254,3 +254,16 @@ export const detailNote = {
     },
   },
 }
+
+export const notFound = {
+  en: {
+    title: 'Page not found',
+    subtitle: 'Oops, the page you are looking for does not exist',
+    back: 'Back to home',
+  },
+  id: {
+    title: 'Halaman tidak ditemukan',
+    subtitle: 'Wah, Halaman yang kamu cari tidak ada',
+    back: 'Kembali ke halaman utama',
+  },
+}

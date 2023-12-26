@@ -1,9 +1,12 @@
 import Button from '@/components/buttons/Button'
 import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { notFound as notFoundLocale } from '@/utilities/locale-data'
+import useLocale from '@/contexts/locale'
 
 const Error = ({ statusCode, title, desc }) => {
   const navigate = useNavigate()
+  const { locale } = useLocale()
 
   const onBackHandler = () => {
     navigate('/')
@@ -18,7 +21,7 @@ const Error = ({ statusCode, title, desc }) => {
         <p>{desc}</p>
         <div className="flex justify-center">
           <Button onClick={onBackHandler} className="mt-4">
-            Kembali ke Halaman Utama
+            {notFoundLocale[locale].back}
           </Button>
         </div>
       </div>

@@ -15,7 +15,10 @@ import ErrorPage from '@/pages/Error'
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import NoteDetailSkeleton from '@/components/skeleton/NoteDetailSkeleton'
-import { detailNote as detailNoteLocale } from '@/utilities/locale-data'
+import {
+  detailNote as detailNoteLocale,
+  notFound as notFounLocale,
+} from '@/utilities/locale-data'
 import useLocale from '@/contexts/locale'
 
 const DetailNote = () => {
@@ -93,8 +96,8 @@ const DetailNote = () => {
     return (
       <ErrorPage
         statusCode={404}
-        title="Not Found"
-        desc="Wah, halaman yang kamu cari ga ditemuin"
+        title={notFounLocale[locale].title}
+        desc={notFounLocale[locale].subtitle}
       />
     )
   }
