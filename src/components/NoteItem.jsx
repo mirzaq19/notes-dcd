@@ -28,7 +28,7 @@ const NoteItem = ({ className, id, title, body, createdAt, ...rest }) => {
         </p>
       </div>
       <hr className="border-0 border-b border-secondary" />
-      <p className="line-clamp-6 text-ellipsis">{parse(body)}</p>
+      <div className="line-clamp-6 text-ellipsis">{parse(body)}</div>
     </div>
   )
 }

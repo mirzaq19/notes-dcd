@@ -104,7 +104,7 @@ const DetailNote = () => {
           <p className="text-gray-500 dark:text-gray-400 text-xs my-1 tracking-wider md:text-sm">
             {showFormattedDate(note.createdAt)}
           </p>
-          <p>{note.body}</p>
+          <div>{note.body}</div>
           <div className="flex justify-end">
             <div className="mt-6 flex gap-2 max-w-lg">
               {note.archived ? (
