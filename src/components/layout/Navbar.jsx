@@ -7,6 +7,7 @@ import { useLocation } from 'react-router-dom'
 import useAuth from '@/contexts/auth'
 import { removeAccessToken } from '@/utilities/network-data'
 import toast from 'react-hot-toast'
+import LocaleButton from '@/components/buttons/LocaleButton'
 
 const Navbar = ({ className, ...rest }) => {
   const { pathname } = useLocation()
@@ -57,6 +58,7 @@ const Navbar = ({ className, ...rest }) => {
         </nav>
         <div className="flex gap-1 items-center">
           <ThemeButton />
+          <LocaleButton />
           {authState.authenticated ? (
             authState.loading ? (
               <div className="ml-3 animate-pulse h-6 w-16 bg-zinc-700 rounded-lg"></div>
