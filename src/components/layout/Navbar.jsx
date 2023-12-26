@@ -8,7 +8,7 @@ import useAuth from '@/contexts/auth'
 import { removeAccessToken } from '@/utilities/network-data'
 import toast from 'react-hot-toast'
 import LocaleButton from '@/components/buttons/LocaleButton'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { navbar as navbarLocale } from '@/utilities/locale-data'
 import useLocale from '@/contexts/locale'
 
@@ -19,6 +19,7 @@ const Navbar = ({ className, ...rest }) => {
   const { locale } = useLocale()
 
   const logout = () => {
+    setCollapsed(true)
     authDispatch({ type: 'LOGOUT' })
     removeAccessToken()
     toast.success('Logout successfully')
@@ -29,10 +30,6 @@ const Navbar = ({ className, ...rest }) => {
     { href: '/add', label: navbarLocale[locale].add },
     { href: '/archives', label: navbarLocale[locale].archives },
   ]
-
-  useEffect(() => {
-    setCollapsed(true)
-  }, [])
 
   return (
     <header
