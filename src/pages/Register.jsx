@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { useRef, useState } from 'react'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
+import { register as registerLocale } from '@/utilities/locale-data'
+import useLocale from '@/contexts/locale'
 
 const Register = () => {
   const navigate = useNavigate()
@@ -24,6 +26,7 @@ const Register = () => {
   })
   const [passwordConfirm, setPasswordConfirm] = useState('')
   const [registering, setRegistering] = useState(false)
+  const { locale } = useLocale()
 
   const registerHandler = async (data) => {
     setRegistering(true)
@@ -61,13 +64,13 @@ const Register = () => {
     toast.promise(
       registerHandler(data)
         .then(({ error }) => {
-          if (error) throw new Error('Registration failed')
+          if (error) throw new Error(registerLocale[locale].registering.error)
           navigate('/login')
         })
         .finally(() => setRegistering(false)),
       {
-        loading: 'Loading',
-        success: 'Registration successfully',
+        loading: registerLocale[locale].registering.loading,
+        success: registerLocale[locale].registering.success,
         error: (err) =>
           err.message ?? 'Something went wrong, please try again later!',
       }
@@ -78,7 +81,7 @@ const Register = () => {
     if (!name) {
       setErrors((prev) => ({
         ...prev,
-        name: 'Name is required',
+        name: registerLocale[locale].validation.name.required,
       }))
       return false
     }
@@ -93,14 +96,14 @@ const Register = () => {
     if (!email) {
       setErrors((prev) => ({
         ...prev,
-        email: 'Email is required',
+        email: registerLocale[locale].validation.email.required,
       }))
       return false
     }
     if (email !== '' && !email.includes('@')) {
       setErrors((prev) => ({
         ...prev,
-        email: 'Email is invalid',
+        email: registerLocale[locale].validation.email.invalid,
       }))
       return false
     }
@@ -115,7 +118,7 @@ const Register = () => {
     if (!password) {
       setErrors((prev) => ({
         ...prev,
-        password: 'Password is required',
+        password: registerLocale[locale].validation.password.required,
       }))
       return false
     }
@@ -130,14 +133,16 @@ const Register = () => {
     if (!passwordConfirm) {
       setErrors((prev) => ({
         ...prev,
-        passwordConfirm: 'Password confirmation is required',
+        passwordConfirm:
+          registerLocale[locale].validation.password_confirmation.required,
       }))
       return false
     }
     if (passwordConfirm !== password) {
       setErrors((prev) => ({
         ...prev,
-        passwordConfirm: 'Password confirmation is not match',
+        passwordConfirm:
+          registerLocale[locale].validation.password_confirmation.same,
       }))
       return false
     }
@@ -152,20 +157,20 @@ const Register = () => {
     <div className="min-h-main">
       <div className="my-8">
         <div className="text-center mb-6">
-          <h1 className="mb-1">Register</h1>
-          <p className="tracking-wider">Register to use the app, please</p>
+          <h1 className="mb-1">{registerLocale[locale].title}</h1>
+          <p className="tracking-wider">{registerLocale[locale].subtitle}</p>
         </div>
         <div className="flex justify-center">
           <form className="max-w-xl w-full" onSubmit={onRegisterSubmitHandler}>
-            <label className="inline-block mb-2" htmlFor="nama">
-              Nama
+            <label className="inline-block mb-2" htmlFor="name">
+              {registerLocale[locale].name}
             </label>
             <Input
-              id="nama"
+              id="name"
               className={
                 errors.name ? 'border-red-600 dark:border-red-400' : ''
               }
-              placeholder="nama"
+              placeholder={registerLocale[locale].name.toLowerCase()}
               value={name}
               setValue={setName}
               ref={nameRef}
@@ -176,14 +181,14 @@ const Register = () => {
               {errors.name}
             </p>
             <label className="inline-block mb-2" htmlFor="email">
-              Email
+              {registerLocale[locale].email}
             </label>
             <Input
               id="email"
               className={
                 errors.email ? 'border-red-600 dark:border-red-400' : ''
               }
-              placeholder="email"
+              placeholder={registerLocale[locale].email.toLowerCase()}
               type="email"
               value={email}
               setValue={setEmail}
@@ -195,7 +200,7 @@ const Register = () => {
               {errors.email}
             </p>
             <label className="inline-block mb-2" htmlFor="password">
-              Password
+              {registerLocale[locale].password}
             </label>
             <Input
               id="password"
@@ -214,7 +219,7 @@ const Register = () => {
               {errors.password}
             </p>
             <label className="inline-block mb-2" htmlFor="passwordConfirm">
-              Password Confirmation
+              {registerLocale[locale].password_confirmation}
             </label>
             <Input
               id="passwordConfirm"
@@ -235,9 +240,9 @@ const Register = () => {
               {errors.passwordConfirm}
             </p>
             <p className="my-4">
-              have an account?{' '}
+              {registerLocale[locale].login_prefix}{' '}
               <CustomLink className="pb-1 dark:text-zinc-300" href="/login">
-                Login
+                {registerLocale[locale].login}
               </CustomLink>
             </p>
             <Button className="w-full md:w-a" disabled={registering}>
@@ -246,7 +251,7 @@ const Register = () => {
               ) : (
                 ''
               )}
-              Register
+              {registerLocale[locale].register}
             </Button>
           </form>
         </div>
