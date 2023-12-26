@@ -10,8 +10,8 @@ const LocaleButton = ({ className, ...rest }) => {
   return (
     <ToggleButton
       className={className}
-      firstEl={<img className="w-6" src={IDFlag} alt="id" />}
-      secondEl={<img className="w-6" src={ENFlag} alt="en" />}
+      firstEl={<img className="w-4 md:w-6" src={IDFlag} alt="id" />}
+      secondEl={<img className="w-4 md:w-6" src={ENFlag} alt="en" />}
       onClick={toggleLocale}
       toggleCallback={() => locale === 'id'}
       {...rest}

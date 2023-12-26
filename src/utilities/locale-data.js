@@ -194,3 +194,18 @@ export const inputCounter = {
     counter: 'Sisa karakter',
   },
 }
+
+export const navbar = {
+  en: {
+    notes: 'Notes',
+    add: 'Add',
+    archives: 'Archives',
+    logout: 'Logout',
+  },
+  id: {
+    notes: 'Catatan',
+    add: 'Tambah',
+    archives: 'Arsip',
+    logout: 'Keluar',
+  },
+}
