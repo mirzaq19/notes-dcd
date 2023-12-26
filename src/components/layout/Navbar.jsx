@@ -86,7 +86,7 @@ const Navbar = ({ className, ...rest }) => {
                 </button>
                 <div
                   className={clsx(
-                    'absolute -translate-x-3/4 translate-y-24 z-50 my-4 text-base list-none',
+                    'absolute -translate-x-[90%] md:-translate-x-3/4 translate-y-24 z-50 my-4 text-base list-none',
                     'bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-dark dark:divide-gray-600 dark:shadow-pink-500/25',
                     'transition duration-300 ease-in-out transform origin-top-right',
                     collapsed ? 'opacity-0 scale-0' : 'opacity-100 scale-100'
