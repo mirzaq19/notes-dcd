@@ -138,3 +138,59 @@ export const noteList = {
     empty: 'Tidak ada catatan',
   },
 }
+
+export const addNote = {
+  en: {
+    title: 'Add note',
+    placeholder: {
+      title: 'Type note title',
+      content: 'Type note content',
+    },
+    validation: {
+      title: {
+        required: 'Title is required',
+        long: 'Title is too long',
+      },
+      content: {
+        required: 'Content is required',
+      },
+    },
+    adding: {
+      loading: 'Adding note...',
+      success: 'Note added',
+      error: 'Failed to add note',
+    },
+    add_button: 'Add note',
+  },
+  id: {
+    title: 'Buat catatan',
+    placeholder: {
+      title: 'Tuliskan judul catatan',
+      content: 'Tuliskan isi catatan',
+    },
+    validation: {
+      title: {
+        required: 'Judul dibutuhkan',
+        long: 'Judul terlalu panjang',
+      },
+      content: {
+        required: 'Isi dibutuhkan',
+      },
+    },
+    adding: {
+      loading: 'Menambah catatan...',
+      success: 'Catatan ditambahkan',
+      error: 'Gagal menambah catatan',
+    },
+    add_button: 'Buat catatan',
+  },
+}
+
+export const inputCounter = {
+  en: {
+    counter: 'Characters left',
+  },
+  id: {
+    counter: 'Sisa karakter',
+  },
+}

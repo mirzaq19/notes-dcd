@@ -8,6 +8,8 @@ import EditableDiv from '@/components/form/EditableDiv'
 import { addNote } from '@/utilities/network-data'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
+import { addNote as addNoteLocale } from '@/utilities/locale-data'
+import useLocale from '@/contexts/locale'
 
 const AddNote = () => {
   const maxTitleLength = 50
@@ -23,6 +25,7 @@ const AddNote = () => {
   })
   const titleRef = useRef('')
   const bodyRef = useRef('')
+  const { locale } = useLocale()
 
   const onTitleChangeHandler = (value) => {
     setNote((prevState) => ({
@@ -43,7 +46,7 @@ const AddNote = () => {
     if (value.length === 0) {
       setErrors((prevState) => ({
         ...prevState,
-        title: 'Title is required',
+        title: addNoteLocale[locale].validation.title.required,
       }))
 
       return false
@@ -52,7 +55,7 @@ const AddNote = () => {
     if (value.length > maxTitleLength) {
       setErrors((prevState) => ({
         ...prevState,
-        title: 'Title is too long',
+        title: addNoteLocale[locale].validation.title.long,
       }))
 
       return false
@@ -70,7 +73,7 @@ const AddNote = () => {
     if (value.length === 0) {
       setErrors((prevState) => ({
         ...prevState,
-        body: 'Body is required',
+        body: addNoteLocale[locale].validation.content.required,
       }))
 
       return false
@@ -100,11 +103,11 @@ const AddNote = () => {
         title: note.title,
         body: note.body,
       }).then(({ error }) => {
-        if (error) throw new Error('Failed to create note')
+        if (error) throw new Error(addNoteLocale[locale].adding.error)
       }),
       {
-        loading: 'Loading',
-        success: 'Note created successfully',
+        loading: addNoteLocale[locale].adding.loading,
+        success: addNoteLocale[locale].adding.success,
         error: (err) =>
           err.message ?? 'Something went wrong, please try again later!',
       }
@@ -117,14 +120,14 @@ const AddNote = () => {
   }
   return (
     <div className="min-h-main">
-      <Section title="Buat Catatan">
+      <Section title={addNoteLocale[locale].title}>
         <form onSubmit={onSubmitHandler}>
           <InputWithCounter
             className={errors.title ? '' : 'mb-3'}
             inputClassName={
               errors.title ? 'border-red-600 dark:border-red-400' : ''
             }
-            placeholder="Tuliskan judul catatan"
+            placeholder={addNoteLocale[locale].placeholder.title}
             maxCounter={maxTitleLength}
             value={note.title}
             setValue={onTitleChangeHandler}
@@ -139,7 +142,7 @@ const AddNote = () => {
             className={
               errors.body ? 'border-red-600 dark:border-red-400' : 'mb-3'
             }
-            placeholder="Tuliskan isi catatan"
+            placeholder={addNoteLocale[locale].placeholder.content}
             setValue={onBodyChangeHandler}
             ref={bodyRef}
             onBlur={bodyValidationHandler}
@@ -150,7 +153,7 @@ const AddNote = () => {
 
           <Button className="w-full" disabled={loading}>
             <FontAwesomeIcon icon={faCirclePlus} />
-            Buat
+            {addNoteLocale[locale].add_button}
           </Button>
         </form>
       </Section>

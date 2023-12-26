@@ -1,6 +1,8 @@
 import { forwardRef, useEffect, useState } from 'react'
 import Input from '@/components/form/Input'
 import PropTypes from 'prop-types'
+import { inputCounter as inputCounterLocale } from '@/utilities/locale-data'
+import useLocale from '@/contexts/locale'
 
 const InputWithCounter = forwardRef(
   (
@@ -16,6 +18,7 @@ const InputWithCounter = forwardRef(
     ref
   ) => {
     const [counter, setCounter] = useState(maxCounter)
+    const { locale } = useLocale()
 
     const onChangeHandler = (value) => {
       if (value.length <= maxCounter) {
@@ -31,7 +34,9 @@ const InputWithCounter = forwardRef(
     return (
       <div className={className}>
         <div className="text-end mb-1">
-          <span>Sisa karakter: {counter}</span>
+          <span>
+            {inputCounterLocale[locale].counter}: {counter}
+          </span>
         </div>
         <Input
           className={inputClassName}
