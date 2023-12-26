@@ -7,6 +7,8 @@ import Button from '@/components/buttons/Button'
 import Input from '@/components/form/Input'
 import CustomLink from '@/components/links/CustomLink'
 import useLogin from '@/hooks/useLogin'
+import { login as loginLocale } from '@/utilities/locale-data'
+import useLocale from '@/contexts/locale'
 
 const Login = () => {
   const [email, setEmail] = useState('')
@@ -20,13 +22,14 @@ const Login = () => {
   })
   const emailRef = useRef('')
   const passwordRef = useRef('')
+  const { locale } = useLocale()
 
   const loginHandler = async () => {
     const { error, data } = await login({
       email,
       password,
     })
-    if (error) throw new Error('Login failed')
+    if (error) throw new Error(loginLocale[locale].logging_in.error)
 
     putAccessToken(data.accessToken)
     await loginDispatch({
@@ -52,8 +55,8 @@ const Login = () => {
         setLogginIn(false)
       }),
       {
-        loading: 'Loading',
-        success: 'Login successfully',
+        loading: loginLocale[locale].logging_in.loading,
+        success: loginLocale[locale].logging_in.success,
         error: (err) =>
           err.message ?? 'Something went wrong, please try again later!',
       }
@@ -64,14 +67,14 @@ const Login = () => {
     if (email === '') {
       setErrors((prev) => ({
         ...prev,
-        email: 'Email is required',
+        email: loginLocale[locale].validation.email.required,
       }))
       return false
     }
     if (email !== '' && !email.includes('@')) {
       setErrors((prev) => ({
         ...prev,
-        email: 'Email is invalid',
+        email: loginLocale[locale].validation.email.invalid,
       }))
       return false
     }
@@ -87,7 +90,7 @@ const Login = () => {
     if (password === '') {
       setErrors((prev) => ({
         ...prev,
-        password: 'Password is required',
+        password: loginLocale[locale].validation.password.required,
       }))
       return false
     }
@@ -103,20 +106,20 @@ const Login = () => {
     <div className="min-h-main">
       <div className="my-8">
         <div className="text-center mb-6">
-          <h1 className="mb-1">Login</h1>
-          <p className="tracking-wider">Login to use the app, please</p>
+          <h1 className="mb-1">{loginLocale[locale].title}</h1>
+          <p className="tracking-wider">{loginLocale[locale].subtitle}</p>
         </div>
         <div className="flex justify-center">
           <form className="max-w-xl w-full" onSubmit={onSubmitHandler}>
             <label className="inline-block mb-2" htmlFor="email">
-              Email
+              {loginLocale[locale].email}
             </label>
             <Input
               id="email"
               className={
                 errors.email ? 'border-red-600 dark:border-red-400' : ''
               }
-              placeholder="email"
+              placeholder={loginLocale[locale].email.toLowerCase()}
               type="email"
               value={email}
               setValue={setEmail}
@@ -128,7 +131,7 @@ const Login = () => {
               {errors.email}
             </p>
             <label className="inline-block mb-2" htmlFor="password">
-              Password
+              {loginLocale[locale].password}
             </label>
             <Input
               id="password"
@@ -148,9 +151,9 @@ const Login = () => {
             </p>
 
             <p className="my-4">
-              don&apos;t have an account?{' '}
+              {loginLocale[locale].register_prefix}{' '}
               <CustomLink className="pb-1 dark:text-zinc-300" href="/register">
-                register
+                {loginLocale[locale].register}
               </CustomLink>
             </p>
             <Button className="w-full md:w-a" disabled={logginIn}>
@@ -159,7 +162,7 @@ const Login = () => {
               ) : (
                 ''
               )}
-              Login
+              {loginLocale[locale].login}
             </Button>
           </form>
         </div>
