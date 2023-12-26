@@ -5,12 +5,15 @@ import NoteItemSkeleton from '@/components/skeleton/NoteItemSkeleton'
 import { getActiveNotes } from '@/utilities/network-data'
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import { noteList as noteListLocale } from '@/utilities/locale-data'
+import useLocale from '@/contexts/locale'
 
 const Home = () => {
   const [searchParams, setSearchParams] = useSearchParams()
   const keyword = searchParams.get('keyword') || ''
   const [notes, setNotes] = useState([])
   const [loading, setLoading] = useState(false)
+  const { locale } = useLocale()
 
   useEffect(() => {
     setLoading(true)
@@ -40,7 +43,7 @@ const Home = () => {
   return (
     <div className="min-h-main">
       <Search value={keyword} setValue={onSearchHandler} />
-      <Section title="Catatan Aktif">
+      <Section title={noteListLocale[locale].active_notes}>
         {!loading ? (
           <NoteList notes={notesToRender} />
         ) : (

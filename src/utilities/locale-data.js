@@ -114,3 +114,27 @@ export const register = {
     },
   },
 }
+
+export const search = {
+  en: {
+    title: 'Search note',
+    placeholder: 'Type title to search',
+  },
+  id: {
+    title: 'Cari catatan',
+    placeholder: 'Tuliskan judul untuk mencari',
+  },
+}
+
+export const noteList = {
+  en: {
+    active_notes: 'Active notes',
+    archived_notes: 'Archived notes',
+    empty: 'No notes',
+  },
+  id: {
+    active_notes: 'Catatan aktif',
+    archived_notes: 'Catatan terarsip',
+    empty: 'Tidak ada catatan',
+  },
+}
