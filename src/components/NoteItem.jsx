@@ -1,47 +1,44 @@
-import Button from './Button'
-import styles from './NoteItem.module.scss'
-import {
-  faArchive,
-  faTrashAlt,
-  faExchange,
-} from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { showFormattedDate } from '../utilities/getData'
+import { showFormattedDate } from '@/utilities/data'
+import clsx from 'clsx'
+import PropTypes from 'prop-types'
+import CustomLink from '@/components/links/CustomLink'
+import parse from 'html-react-parser'
 
-const NoteItem = ({
-  title,
-  body,
-  archived,
-  createdAt,
-  onArchive,
-  onDelete,
-}) => {
+const NoteItem = ({ className, id, title, body, createdAt, ...rest }) => {
   return (
-    <div className={styles.card}>
-      <div className={styles.card_content}>
-        <h3>{title}</h3>
-        <p className={styles.date}>{showFormattedDate(createdAt)}</p>
-        <hr className={styles.divider} />
-        <p>{body}</p>
+    <div
+      className={clsx(
+        'card gap-2 p-4 group',
+        'border border-secondary rounded-md shadow-sm',
+        className
+      )}
+      {...rest}
+    >
+      <div className="text-center">
+        <h3 className="line-clamp-1 text-ellipsis">
+          <CustomLink
+            className="group-hover:border-transparent"
+            href={`/notes/${id}`}
+          >
+            {title}
+          </CustomLink>
+        </h3>
+        <p className="text-gray-500 dark:text-gray-400 text-xs mt-1 tracking-wider md:text-sm">
+          {showFormattedDate(createdAt)}
+        </p>
       </div>
-      <div className={styles.card_button}>
-        <Button full={true} onClick={onArchive}>
-          {archived ? (
-            <>
-              <FontAwesomeIcon icon={faExchange} /> Pindahkan
-            </>
-          ) : (
-            <>
-              <FontAwesomeIcon icon={faArchive} /> Arsipkan
-            </>
-          )}
-        </Button>
-        <Button full={true} onClick={onDelete}>
-          <FontAwesomeIcon icon={faTrashAlt} /> Hapus
-        </Button>
-      </div>
+      <hr className="border-0 border-b border-secondary" />
+      <div className="line-clamp-6 text-ellipsis">{parse(body)}</div>
     </div>
   )
+}
+
+NoteItem.propTypes = {
+  className: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
 }
 
 export default NoteItem

@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --tw-clr-dark: 43 43 43;
+    --tw-clr-light: 236 236 236;
+    --tw-clr-accent-peach: 241 0 130;
+    --tw-clr-accent-grape: 151 0 222;
+    --tw-clr-secondary: 221 221 221;
+  }
+
+  ::selection {
+    background-color: rgba(var(--tw-clr-accent-peach) / 0.2);
+  }
+
+  /* #region  /**=========== Default Typography =========== */
+  h1 {
+    @apply text-2xl font-bold md:text-3xl;
+  }
+  h2 {
+    @apply text-xl font-bold md:text-2xl;
+  }
+  h3 {
+    @apply text-lg font-bold md:text-xl;
+  }
+  h4 {
+    @apply text-base font-bold md:text-lg;
+  }
+  body {
+    @apply text-sm md:text-base;
+  }
+  /* #endregion  /**======== Default Typography =========== */
+  .min-h-main {
+    @apply min-h-[calc(100vh-144px)];
+  }
+}
+
+@layer utilities {
+  /* .animated-underline {
+    position: relative;
+  }
+  .animated-underline::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.15rem;
+    background-color: rgb(var(--tw-clr-accent-peach));
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 300ms, transform 300ms;
+  }
+  .animated-underline:hover::after {
+    opacity: 1;
+    transform: scale(1);
+  } */
+  .animated-underline {
+    background-image: linear-gradient(#33333300, #33333300),
+      linear-gradient(
+        to right,
+        rgb(var(--tw-clr-accent-peach)),
+        rgb(var(--tw-clr-accent-peach))
+      );
+    background-size: 100% 2px, 0 2px;
+    background-position: 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+    transition: 0.3s ease;
+    transition-property: background-size, color, background-color, border-color;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animated-underline {
+      transition: none;
+    }
+  }
+  .animated-underline:hover,
+  .animated-underline:focus-visible,
+  .card:hover .animated-underline {
+    background-size: 0 2px, 100% 2px;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(var(--tw-clr-secondary));
+    padding: 1rem;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 0px 1px rgb(var(--tw-clr-accent-peach) / 0.2);
+    transition: all 0.2s ease-in-out;
+  }
+  .card:hover {
+    box-shadow: 0 0 4px 2px rgb(var(--tw-clr-accent-peach) / 0.4);
+    transform: scale(1.02);
+  }
+}

@@ -1,55 +1,40 @@
-import NoteItem from './NoteItem'
-import Section from './Section'
-import styles from './NoteList.module.scss'
+import NoteItem from '@/components/NoteItem'
+import clsx from 'clsx'
+import PropTypes from 'prop-types'
 
-const NoteList = ({ notes, onArchive, onDelete }) => {
-  const activeNotes = notes.filter((note) => !note.archived)
-  const archivedNotes = notes.filter((note) => note.archived)
+const NoteList = ({ className, notes, ...rest }) => {
   return (
     <>
-      <Section title="Catatan Aktif">
-        {activeNotes.length > 0 ? (
-          <div className={styles.cards}>
-            {activeNotes.map((note) => (
-              <NoteItem
-                key={note.id}
-                title={note.title}
-                body={note.body}
-                archived={note.archived}
-                createdAt={note.createdAt}
-                onArchive={() => onArchive(note.id)}
-                onDelete={() => onDelete(note.id)}
-              />
-            ))}
-          </div>
-        ) : (
-          <div className={styles.cards_empty}>
-            <p>Tidak ada catatan aktif</p>
-          </div>
-        )}
-      </Section>
-      <Section title="Arsip">
-        {archivedNotes.length > 0 ? (
-          <div className={styles.cards}>
-            {archivedNotes.map((note) => (
-              <NoteItem
-                key={note.id}
-                title={note.title}
-                body={note.body}
-                archived={note.archived}
-                createdAt={note.createdAt}
-                onArchive={() => onArchive(note.id)}
-                onDelete={() => onDelete(note.id)}
-              />
-            ))}
-          </div>
-        ) : (
-          <div className={styles.cards_empty}>
-            <p>Tidak ada catatan di arsip</p>
-          </div>
-        )}
-      </Section>
+      {notes.length !== 0 ? (
+        <div
+          className={clsx(
+            'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3',
+            className
+          )}
+          {...rest}
+        >
+          {notes.map((note) => (
+            <NoteItem
+              key={note.id}
+              id={note.id}
+              title={note.title}
+              body={note.body}
+              createdAt={note.createdAt}
+            />
+          ))}
+        </div>
+      ) : (
+        <p className="text-center border-2 border-dotted border-secondary rounded py-8 text-gray-600 dark:text-gray-300 dark:border-secondary/60">
+          Tidak ada catatan.
+        </p>
+      )}
     </>
   )
 }
+
+NoteList.propTypes = {
+  className: PropTypes.string,
+  notes: PropTypes.array.isRequired,
+}
+
 export default NoteList

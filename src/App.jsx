@@ -1,63 +1,55 @@
-import NoteList from './components/NoteList'
-import Layout from './components/Layout'
-import NotesForm from './components/NotesForm'
-import Search from './components/Search'
-import ThemeWrapper from './components/ThemeWrapper'
-import { getInitialData } from './utilities/getData'
-import { useEffect, useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
+import Home from '@/pages/Home'
+import Navbar from '@/components/layout/Navbar'
+import Container from '@/components/layout/Container'
+import Footer from '@/components/layout/Footer'
+import AddNote from '@/pages/AddNote'
+import Archive from '@/pages/Archive'
+import DetailNote from '@/pages/DetailNote'
+import Error from '@/pages/Error'
+import Login from '@/pages/Login'
+import Register from '@/pages/Register'
+import PrivateRoute from '@/routes/PrivateRoute'
+import PublicRoute from './routes/PublicRoute'
+import { Toaster } from 'react-hot-toast'
+import { notFound as notFoundLocale } from '@/utilities/locale-data'
+import useLocale from '@/contexts/locale'
 
 function App() {
-  const [notes, setNotes] = useState(getInitialData)
-  const [searchNotes, setSearchNotes] = useState([])
-  const [keyword, setKeyword] = useState('')
-
-  const onArchiveHandler = (id) => {
-    const newNotes = notes.map((note) => {
-      if (note.id === id) {
-        return { ...note, archived: !note.archived }
-      }
-      return note
-    })
-    setNotes(newNotes)
-  }
-
-  const onDeleteHandler = (id) => {
-    const newNotes = notes.filter((note) => note.id !== id)
-    setNotes(newNotes)
-  }
-
-  const onAddNoteHandler = (note) => {
-    setNotes([
-      ...notes,
-      {
-        ...note,
-        id: +new Date(),
-        archived: false,
-        createdAt: new Date().toISOString(),
-      },
-    ])
-  }
-
-  useEffect(() => {
-    const newNotes = notes.filter((note) => {
-      const title = note.title.toLowerCase()
-      return title.includes(keyword.toLowerCase())
-    })
-    setSearchNotes(newNotes)
-  }, [keyword, notes])
+  const { locale } = useLocale()
 
   return (
-    <ThemeWrapper>
-      <Layout>
-        <NotesForm onAddNote={onAddNoteHandler} />
-        <Search value={keyword} setValue={(value) => setKeyword(value)} />
-        <NoteList
-          notes={searchNotes}
-          onArchive={onArchiveHandler}
-          onDelete={onDeleteHandler}
-        />
-      </Layout>
-    </ThemeWrapper>
+    <>
+      <Navbar />
+      <main>
+        <Container>
+          <Routes>
+            <Route path="/" element={<PrivateRoute />}>
+              <Route path="/" element={<Home />} />
+              <Route path="add" element={<AddNote />} />
+              <Route path="archives" element={<Archive />} />
+              <Route path="notes/:id" element={<DetailNote />} />
+            </Route>
+            <Route path="/" element={<PublicRoute restricted />}>
+              <Route path="login" element={<Login />} />
+              <Route path="register" element={<Register />} />
+            </Route>
+            <Route
+              path="/*"
+              element={
+                <Error
+                  statusCode={404}
+                  title={notFoundLocale[locale].title}
+                  desc={notFoundLocale[locale].subtitle}
+                />
+              }
+            />
+          </Routes>
+          <Toaster />
+          <Footer />
+        </Container>
+      </main>
+    </>
   )
 }
 
